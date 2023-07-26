@@ -1,9 +1,18 @@
-const character  = 'mario';
+let character = 'Nick';
+let age = 32;
+let isClimber = true;
 
-console.log(character);
+// character = 20;
+character = 'Rebecca';
 
-const inputs = document.querySelectorAll('input');
+// age = 'nick';
+age = 35;
 
-inputs.forEach(input => {
-  console.log(input);
-});
+// isClimber = 'yes';
+isClimber = true;
+
+const circumference = (diameter: number) => {
+  return diameter * Math.PI ;
+}
+
+console.log(circumference(7.8))
