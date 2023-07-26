@@ -1,13 +1,20 @@
-var character = 'Nick';
-var age = 32;
-var isClimber = true;
-// character = 20;
-character = 'Rebecca';
-// age = 'nick';
-age = 35;
-// isClimber = 'yes';
-isClimber = true;
-var circumference = function (diameter) {
-    return diameter * Math.PI;
+// Arrays
+var names = ['Nick', 'Becs', 'Chris'];
+names.push('June');
+// names.push(3);
+// names[0] = 3;
+var numbers = [10, 20, 30, 40];
+numbers.push(45);
+// numbers.push('steve')
+// numbers[1] = 'john'
+var mixed = ['ken', 4, 'john', 9];
+mixed.push('sarah');
+mixed.push(56);
+// objects 
+var ninja = {
+    name: 'nick',
+    isClimber: true,
+    age: 45
 };
-console.log(circumference(7.8));
+ninja.age = 34;
+ninja.isClimber = 'false';

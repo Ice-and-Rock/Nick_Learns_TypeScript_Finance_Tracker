@@ -1,18 +1,26 @@
-let character = 'Nick';
-let age = 32;
-let isClimber = true;
+// Arrays
+let names = ['Nick', 'Becs', 'Chris'];
 
-// character = 20;
-character = 'Rebecca';
+names.push('June');
+// names.push(3);
+// names[0] = 3;
 
-// age = 'nick';
-age = 35;
+let numbers = [10,20,30,40];
 
-// isClimber = 'yes';
-isClimber = true;
+numbers.push(45)
+// numbers.push('steve')
+// numbers[1] = 'john'
 
-const circumference = (diameter: number) => {
-  return diameter * Math.PI ;
-}
+let mixed = ['ken', 4, 'john', 9]
 
-console.log(circumference(7.8))
+mixed.push('sarah')
+mixed.push(56)
+
+// objects 
+let ninja = {
+  name: 'nick',
+  isClimber: true,
+  age: 45
+};
+ninja.age = 34;
+ninja.isClimber = 'false';
