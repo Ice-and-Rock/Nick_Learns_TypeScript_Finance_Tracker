@@ -190,3 +190,16 @@ console.log(form.children);
 const type = document.querySelector('#type') as HTMLSelectElement;
 ~~~ 
 
+create an ```eventListener``` for the submit button that logs all of the form data collected
+~~~ javascript
+// grab the form using the submit button
+form.addEventListener('submit', (Event: Event) => {
+    Event.preventDefault();
+    console.log(
+        type.value,
+        tofrom.value,
+        details.value,
+        amount.valueAsNumber
+    )})
+~~~ 
+
