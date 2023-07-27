@@ -33,7 +33,7 @@ let ninja = {
   age: 45
 };
 ninja.age = 34;
-ninja.isClimber = 'false';
+ninja.isClimber = false;
 ~~~
 
 ## Explicit Types 
@@ -122,5 +122,60 @@ let addV2 = (a: number, b: number, c: number | string = 10) => {
     console.log(c)
 }
 // call the function with arguments 
-add(5, 10, 45) 
+add(5, 10, "45") 
 ~~~ 
+
+A **Void type** occurs when a function has no return value either ever, or at that point in time. For example, the aboveo code would have the type void, but the code below would have an inferred value of 'number'...
+~~~ javascript
+let minus = (a: number, b: number, c: number|string) => {
+    return a - b
+}
+minus(5, 3)
+~~~
+
+## Type Aliases
+Are used to reduce the amount or repeated code in your work. For example you can create an alias for a repeatable type: string|number. You can also create an alias for an object, inc size and types:
+~~~ javascript
+// create 2 type aliases
+// 1 for an id number | 1 for a member details object
+type stringOrNum = string | number ;
+type memberObject = { name: string, id: number } ;
+
+// write a function with the first the alias
+let memberDetails = (name: string, id: stringOrNum) => {
+    console.log(memberDetails)
+}
+// write a function with the second alias
+let memberDetailsV2 = (member: memberObject) => {
+    console.log(`${member.name} says hey...!`) }
+~~~
+
+## Function signatures
+Similar to aliases but specifically for functions. We can define the type structure of a function and then change the arguments and information in them later on using the same structure. For example:
+- Greet below takes in two strings and can produce void
+~~~ javascript
+let greet: (a: string, b: string) => void;
+greet = (name: string, greeting: string) => {
+    console.log (`${name} says ${greeting}`)
+}
+~~~
+- calculator takes in three arguments to produce a number. The code following still has the initial structure, but with different function contents
+~~~ javascript
+let calculator: (a: number, b: number, c: string) => number ;
+calculator = (num1: number, num2: number, action: string) => {
+    if (action === 'add') {
+        return num1 + num2
+    } else {
+        return num1 - num2
+    }}
+~~~
+- logDetails is an object with two fields that can return void (no return statement). We can simply rename and add contents to the object using an alias object *(person)*. We still keep the same structure type 
+~~~ javascript
+let logDetails: (obj: {name: string, age: number}) => void ;
+type person = {name: string, age: number} ;
+
+logDetails = (user: person) => {
+    console.log(`${user.name} is ${user.age} years old`)
+}
+~~~
+
