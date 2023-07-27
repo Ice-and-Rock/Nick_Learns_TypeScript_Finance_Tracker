@@ -95,7 +95,7 @@ Remember you can run this in real time using 'tsc -w' to watch the TypeScript fi
 
 # Function Basics
 You can define something to be a function but it needs a capitol
-~~~ javscript 
+~~~ javascript 
 let greet: Function;
 greet = () => {
     console.log("hello. welcome to my work...")
@@ -104,7 +104,7 @@ greet = () => {
 
 Define the arguments a function takes in. 
 - The arguments don't have to be **mantatory**, use '?' to say if the argument is strictly necessary 
-~~~ javscript 
+~~~ javascript 
 // write a calculator function
 // takes in 3 items (3rd is optional)
 let add = (a: number, b: number, c?: number | string) => {
@@ -115,7 +115,7 @@ let add = (a: number, b: number, c?: number | string) => {
 add(5, 10, 45)
 ~~~
 - you can create a **default value** for an argument, too. Using the '=' sign in the argument. This will be overwriten when a new argument is passed in
-~~~ javscript 
+~~~ javascript 
 // Same, but with a default parameter for the third value as 10
 let addV2 = (a: number, b: number, c: number | string = 10) => {
     console.log(a + b)
