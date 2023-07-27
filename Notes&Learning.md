@@ -179,3 +179,14 @@ logDetails = (user: person) => {
 }
 ~~~
 
+# Building the App
+Created an app.ts file in src folder => this compiles into the public folder using ```tsc``` command in terminal from the root folder
+
+## The DOM and Type casting
+Pull elements from the HTML page using ```document.querySelector``` and reassign them to be HTML elements (rather than just Elements).
+~~~ javascript
+const form = document.querySelector('.new-item-form') as HTMLFormElement;
+console.log(form.children);
+const type = document.querySelector('#type') as HTMLSelectElement;
+~~~ 
+
