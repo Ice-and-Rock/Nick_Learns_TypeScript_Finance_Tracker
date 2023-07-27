@@ -37,3 +37,19 @@ ninja.isClimber = 'false';
 ~~~
 
 *Explicit Types*
+- written after a variable/array/object has been declared to tell typescript exactly what type something should be
+~~~
+// create a new array that is mixed
+let mixed: (string|number|boolean) [] = [];
+~~~
+~~~
+let secondObject: {
+  name: string,
+  age: number,
+  isClimber: boolean
+}
+//you can't add any more fields to this object and items must match given type
+secondObject = { name: 'Steve', age: 20, isClimber: true}
+~~~
+
+*Dynamic any types*
