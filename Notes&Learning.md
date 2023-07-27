@@ -241,3 +241,111 @@ The defgault behavour of classes - anyone can change the poperties of them. We u
 - private, can't be seen outside the class
 - public, can be seen any changed anywhere
 - can only be read 
+This can all be done inside the constructor
+~~~ javascript
+class Invoice {
+    constructor ( 
+        readonly client: string,
+        private details: string,
+        public amount: number,
+     ) {}}
+~~~
+
+## Modules
+- Seperate the invoices class into a seperate component 
+- Add "module" to the script tag in the HTML
+
+## Interfaces 
+Declaring an interface basically says, if something is created in the future calling itself by that type, it must contain these set credentials
+~~~ javascript
+interface IsPerson {
+    name: string,
+    age: number,
+    speak(a: string): void;
+    spend(a: number): number;
+}
+~~~
+WE can go ahead and test if this is working by creating a variable with the interface, note it must match the criteria! 
+~~~ javascript
+let me: IsPerson = {
+    name: 'nick',
+    age: 33,
+    speak (text: string) {
+        console.log(text)
+        // this can be void
+    },
+    spend (amount: number) {
+        console.log('I spent' + amount)
+        // this can't be void
+        return amount
+    }}
+~~~
+You can hand this interface into a function adn the type will automatically be inferred like so...
+~~~ javascript
+const greetPerson = (person: IsPerson) => {
+    console.log('hello', person.name)
+}
+~~~
+or even like this to test your new object...
+~~~ javascript
+greetPerson( me )
+~~~
+
+## Interfaces with Classes
+So, after playing around, it's time to set up a two classes that implemement the correct type interface. Create a new class file and call it 'payments.ts'. It's going to use the same type structure as the constructor given in 'Invoice'.
+Then add a folder and file called 'HasFormatter'. This will call the format inside each class(?) then hand it back to the class.
+~~~ javascript
+// Create a formatter that simply returns a string from a format function 
+export interface HasFormatter {
+    format(): string; }
+~~~
+this is the updated Class...
+~~~ javascript
+export class Payment implements HasFormatter{
+    constructor ( 
+        readonly recipient: string,
+        private details: string,
+        public amount: number,
+     ) {}
+     
+    format() {
+        return `${this.recipient} is owed £${this.amount} for ${this.details}`;
+    }}
+~~~
+
+Then, check everything is working by going back to App and use HasFormatter as a type for some new variables 
+~~~ javascript
+let docOne: HasFormatter;
+let docTwo: HasFormatter;
+
+docOne = new Invoice('Nick', 'web development work', 400);
+docTwo = new Payment('Rebecca', 'mountain guiding work', 450);
+~~~
+
+Then, create a new array to save all fo the new formatted variables to and .push them in. **Hint**: You shouldn't be getting any type errors here.
+~~~ javascript
+let docs: HasFormatter[] = [];
+docs.push(docOne);
+docs.push(docTwo);
+~~~
+We can then be sure that everyhting we've added to the new array is in the correct format ✅
+
+### create a new payments of invoice object
+In the eventListener in App, add a new variable to capture all the input data. This will depend on the two input fields: invoice/payment.
+We therefore need an **if / else** statement to check which type it is equal to '==='.
+Add the values from the inputs to either classes using the field.value(AsNumer)
+~~~ javascript
+let doc: HasFormatter;
+    if (type.value === 'invoice') {
+        // create a new doc
+        doc = new Invoice(tofrom.value, details.value, amount.valueAsNumber)
+    } else {
+        // create a new doc
+        doc = new Payment(tofrom.value, details.value, amount.valueAsNumber)
+    }
+    console.log(doc)
+~~~
+
+
+
+
