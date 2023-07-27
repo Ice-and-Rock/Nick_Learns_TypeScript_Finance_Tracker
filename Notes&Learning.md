@@ -203,3 +203,41 @@ form.addEventListener('submit', (Event: Event) => {
     )})
 ~~~ 
 
+## Classes
+
+Create a class for the invoices our App is going to take in - rather than simply name all of the types of each field (client, details, number)
+- Use a constructor to automatically assign values taken in by the input fields to be each class
+- Create a method for the class to return a dynamic value using ```format()```
+~~~ javascript
+class Invoice {
+    client: string;
+    details: string;
+    amount: number;
+
+    constructor ( c: string, d: string, a: number ) {
+        this.client = c;
+        this.details = d;
+        this.amount = a;
+    }
+    format() {
+        return `${this.client} owes £${this.amount} for ${this.details}`
+    }}
+~~~
+
+To make an area to test these new classe, we first need to create two variables to hand into thte class... 
+~~~ javascript
+const invoiceOne = new Invoice('Nick', 'work on the new web app', 350);
+const invoiceTwo = new Invoice('Rebecca', 'work on an existing web app', 450);
+~~~
+After this, we need somewhere to save them to. Create an empty array that will only accept the class into each index
+~~~ javascript
+let invoices: Invoice[] = [];
+invoices.push(invoiceOne);
+invoices.push(invoiceTwo)
+~~~
+
+## Private, Public and ReadOnly
+The defgault behavour of classes - anyone can change the poperties of them. We use **Access Modifiers** to change this using: private, public or readonly 
+- private, can't be seen outside the class
+- public, can be seen any changed anywhere
+- can only be read 
