@@ -2,13 +2,13 @@
 
 # Compiling TS files into JS files
 Compile a typescript file in terminal into a js file:
-~~~ 
+~~~ javascript
 tsc sandbox.ts 
 ~~~
 this will return a .js file of the same name but compiled into Javascript that the browser can understand
 
 Compile the same file but watch for updated code in real time
-~~~ 
+~~~ javascript
 tsc sandbox.ts -w 
 ~~~
 
@@ -18,7 +18,7 @@ When compiling .ts files, all of the checks for types are done before compiling,
 ## Arrays
 - Once the type has been inferred automatically, you can't change the type of the array data
 - if, however, you have a mixed type array, thye inferred type will be mixed
-~~~ 
+~~~ javascript
 let mixed = ['ken', 4, 'john', 9]
 
 mixed.push('sarah')
@@ -26,7 +26,7 @@ mixed.push(56)
 ~~~
 ## Objects
 - Same as above, once an object type (shape) has been defined, everything must be the same for this object when being returned. [use ? for each field to say it's not neccesary]
-~~~
+~~~javascript
 let ninja = {
   name: 'nick',
   isClimber: true,
@@ -38,11 +38,11 @@ ninja.isClimber = 'false';
 
 ## Explicit Types 
 - written after a variable/array/object has been declared to tell typescript exactly what type something should be
-~~~
+~~~javascript
 // create a new array that is mixed
 let mixed: (string|number|boolean) [] = [];
 ~~~
-~~~
+~~~javascript
 let secondObject: {
   name: string,
   age: number,
@@ -56,7 +56,7 @@ secondObject = { name: 'Steve', age: 20, isClimber: true}
 
 Try to avoid doing this, simply because it removes any point in using Typescript when developing large apps.
 - that being said, it may rarely have it's use cases
-~~~
+~~~javascript
 //create an object with any type for contents 
 let life: { name: any, age: any }
 life = { name: 'Nick', age: 'Nick'}
@@ -68,27 +68,59 @@ life = { name: 'Nick', age: 'Nick'}
 To compile the TS files (as shown above) we usually use a command like 'tsc src/sandbox.ts'. This will compile the typescript file into a Javascript file to be read by the browser.
 However, if you don't want the Javascript file to be compiled into the same folder as the TS file (which is standard) follow the below instructions in the terminal:
 - Create a stconfig.json file
-~~~
+~~~javascript
 tsc --init
 ~~~
 - Go into the config file and change the root directory to wherever  Javascript files are. The following will watch inside './src':
-~~~
+~~~javascript
  "rootDir": "./src",                                  
  /* Specify the root folder within your source files. */
  ~~~
  - Then change the output location folder in the 'Emit' sction of the json file:
- ~~~
+ ~~~javascript
 "outDir": "./public",                                   
 /* Specify an output folder for all emitted files. */
 ~~~
 Remember you can run this in real time using 'tsc -w' to watch the TypeScript file for changes and automatically compile the new changes
 
- ## Warning 
+ ## Warning **
  - this is a problem in large apps because every TyupeScript file will be compiled to the './public' folder. To stop this from happening, you must set thte compiler to ONLY LISTEN IN A CERTAIN FOLDER using the following at the bottom of the json file:
-~~~
+~~~ javascript
   },
   "include": ["src"]
 }
 // only compile files in the './src' folder
 ~~~ 
 
+
+# Function Basics
+You can define something to be a function but it needs a capitol
+~~~ javscript 
+let greet: Function;
+greet = () => {
+    console.log("hello. welcome to my work...")
+};
+~~~
+
+Define the arguments a function takes in. 
+- The arguments don't have to be **mantatory**, use '?' to say if the argument is strictly necessary 
+~~~ javscript 
+// write a calculator function
+// takes in 3 items (3rd is optional)
+let add = (a: number, b: number, c?: number | string) => {
+    console.log(a + b)
+    console.log(c) 
+}
+// call the function with arguments 
+add(5, 10, 45)
+~~~
+- you can create a **default value** for an argument, too. Using the '=' sign in the argument. This will be overwriten when a new argument is passed in
+~~~ javscript 
+// Same, but with a default parameter for the third value as 10
+let addV2 = (a: number, b: number, c: number | string = 10) => {
+    console.log(a + b)
+    console.log(c)
+}
+// call the function with arguments 
+add(5, 10, 45) 
+~~~ 
