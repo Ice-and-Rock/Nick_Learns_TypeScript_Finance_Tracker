@@ -1,6 +1,6 @@
-### Typescript App
+# Typescript App
 
-## Compiling TS files into JS files
+# Compiling TS files into JS files
 Compile a typescript file in terminal into a js file:
 ~~~ 
 tsc sandbox.ts 
@@ -12,10 +12,10 @@ Compile the same file but watch for updated code in real time
 tsc sandbox.ts -w 
 ~~~
 
-## Type Basics
+# Type Basics
 When compiling .ts files, all of the checks for types are done before compiling, which means the file will not be converted if there are any errors.
 
-# Arrays
+## Arrays
 - Once the type has been inferred automatically, you can't change the type of the array data
 - if, however, you have a mixed type array, thye inferred type will be mixed
 ~~~ 
@@ -24,7 +24,7 @@ let mixed = ['ken', 4, 'john', 9]
 mixed.push('sarah')
 mixed.push(56)
 ~~~
-# Objects
+## Objects
 - Same as above, once an object type (shape) has been defined, everything must be the same for this object when being returned. [use ? for each field to say it's not neccesary]
 ~~~
 let ninja = {
@@ -52,7 +52,7 @@ let secondObject: {
 secondObject = { name: 'Steve', age: 20, isClimber: true}
 ~~~
 
-# Dynamic any types
+## Dynamic any types
 
 Try to avoid doing this, simply because it removes any point in using Typescript when developing large apps.
 - that being said, it may rarely have it's use cases
@@ -63,7 +63,7 @@ life = { name: 'Nick', age: 'Nick'}
 ~~~ 
 - you can see above that a mistake has been made, but due to 'any' field, it won't get picked up
 
-## Better workflow & TSconfig
+# Better workflow & TSconfig
 
 To compile the TS files (as shown above) we usually use a command like 'tsc src/sandbox.ts'. This will compile the typescript file into a Javascript file to be read by the browser.
 However, if you don't want the Javascript file to be compiled into the same folder as the TS file (which is standard) follow the below instructions in the terminal:
@@ -83,7 +83,7 @@ tsc --init
 ~~~
 Remember you can run this in real time using 'tsc -w' to watch the TypeScript file for changes and automatically compile the new changes
 
- # Warning 
+ ## Warning 
  - this is a problem in large apps because every TyupeScript file will be compiled to the './public' folder. To stop this from happening, you must set thte compiler to ONLY LISTEN IN A CERTAIN FOLDER using the following at the bottom of the json file:
 ~~~
   },
