@@ -1,8 +1,5 @@
-"use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
-exports.Invoice = void 0;
 // Classes
-class Invoice {
+export class Invoice {
     constructor(client, details, amount) {
         this.client = client;
         this.details = details;
@@ -12,4 +9,3 @@ class Invoice {
         return `${this.client} owes £${this.amount} for ${this.details}`;
     }
 }
-exports.Invoice = Invoice;

@@ -1,5 +1,8 @@
 # Typescript App
 
+### Issues noted:
+- Remember to change the TypeScript compiler so the browser can read the .js file ```"module": "ES2015"```
+
 # Compiling TS files into JS files
 Compile a typescript file in terminal into a js file:
 ~~~ javascript
@@ -344,6 +347,31 @@ let doc: HasFormatter;
         doc = new Payment(tofrom.value, details.value, amount.valueAsNumber)
     }
     console.log(doc)
+~~~
+
+## Rendering the HTML template
+Take the data from the input fields and render it in a new HTML component on the home page using the format method we created.
+- First, create a new class for the ListTemplate with a constructor that takes in a container argument
+- Render the new item using HasFormatter, give it a heading and define the position
+- The position must include the structre of 'item' and where it is appended in the Li
+~~~javascript 
+export class ListTemplate {
+    // create a private constructor 
+    constructor(private container: HTMLUListElement) {}
+
+    render(item: HasFormatter, heading: string, position: 'start' | 'end') {
+        const li = document.createElement('li');
+        const h4 = document.createElement('h4');
+        h4.innerText = heading;
+        li.append(h4);
+        const p = document.createElement('p');
+        p.innerText = item.format();
+        li.append(p)
+     if (position === 'start') {
+        this.container.prepend(li);
+    } else {
+        this.container.append(li);
+    }}}
 ~~~
 
 

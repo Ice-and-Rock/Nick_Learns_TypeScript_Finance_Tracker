@@ -1,7 +1,7 @@
-import { Invoice } from "./classes/invoice";
-import { ListTemplate } from "./classes/ListTemplates";
-import { Payment } from "./classes/payment";
-import { HasFormatter } from "./interfaces/HasFormatter";
+import { Invoice } from "./classes/invoice.js";
+import { ListTemplate } from "./classes/ListTemplates.js";
+import { Payment } from "./classes/payment.js";
+import { HasFormatter } from "./interfaces/HasFormatter.js";
 
 let docOne: HasFormatter;
 let docTwo: HasFormatter;
@@ -55,5 +55,6 @@ form.addEventListener("submit", (Event: Event) => {
     doc = new Payment(tofrom.value, details.value, amount.valueAsNumber);
   }
 
+  // render the list passing in the three arguments to ListTemplates 
   list.render(doc, type.value, "end");
 });
